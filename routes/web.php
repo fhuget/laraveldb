@@ -15,5 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/index2','StislaController@index');
+
 Route::get('/pegawai','PegawaiController@index');
 Route::post('/pegawai/create','PegawaiController@create');
+Route::get('/pegawai/{id}/edit','PegawaiController@edit');
+Route::post('/pegawai/{id}/update','SiswaController@edit');
+Route::get('/pegawai/{id}/delete','PegawaiController@delete');
