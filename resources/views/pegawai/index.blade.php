@@ -77,12 +77,12 @@
 					</tr>
 					@foreach($data_pegawai as $pegawai)
 					<tr>
-						<td>{{$pegawai->pegawai_nama}}</td>
-						<td>{{$pegawai->pegawai_jabatan}}</td>
-						<td>{{$pegawai->pegawai_umur}}</td>
-						<td>{{$pegawai->pegawai_alamat}}</td>
-						<td><a href="/pegawai/{{$pegawai->id}}/edit" class="btn-btn-warning-sm">Edit</a></td>
-						<td><a href="/pegawai/{{$pegawai->id}}/delete" class="btn-btn-danger-sm">Delete</a></td>
+						<td>{{$pegawai->nama}}</td>
+						<td>{{$pegawai->jabatan}}</td>
+						<td>{{$pegawai->umur}}</td>
+						<td>{{$pegawai->alamat}}</td>
+						<td><a href="/pegawai/{{$pegawai->id}}/edit"  class="btn btn-warning btn-sm">Edit</a></td>
+						<td><a href="/pegawai/{{$pegawai->id}}/delete" class="btn btn-danger btn-sm">Hapus</a></td>
 
 					</tr>
 					@endforeach
@@ -96,37 +96,40 @@
 								    <div class="modal-content">
 								      <div class="modal-header">
 								        <h5 class="modal-title" id="exampleModalLabel">TAMBAH DATA PEGAWAI</h5>
-								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								          <span aria-hidden="true">&times;</span>
-								        </button>
 								      </div>
 								      <div class="modal-body">
 								       <form action="/pegawai/create" method="POST">
 								       {{csrf_field()}}
-											  <div class="form-group">
-											    <label for="exampleInputEmail1">NAMA</label>
-											    <input type="pegawai_nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama">
+
+											 <div class="form-group">
+											    <label for="exampleFormControlInput1">Nama</label>
+											    <input type="nama" name="nama" class="form-control" id="exampleFormControlInput1" placeholder="Nama" required="required">
 											  </div>
 
 											  <div class="form-group">
-											   <label for="exampleInputEmail1">JABATAN</label>
-											    <input type="pegawai_jabatan" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Jabatan">
+											   <label for="exampleFormControlSelect1">Jabatan</label>
+											   <select name="jabatan" class="form-control" id="exampleFormControlSelect1" required="required">
+											   	<option value="Ketua">Ketua</option>
+											   	<option value="Wakil Ketua">Wakil Ketua</option>
+											   	<option value="Sekretaris">Sekretaris</option>
+											   	<option value="Bendahara">Bendahara</option>
+											   </select>
 											  </div>
 
-											  <div class="form-group">
-											   <label for="exampleInputEmail1">UMUR</label>
-											    <input type="pegawai_umur" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Umur">
+											   <div class="form-group">
+											    <label for="exampleFormControlInput2">Umur</label>
+											    <input type="number" name="umur" class="form-control" id="exampleFormControlInput2" placeholder="Umur" required="required">
 											  </div>
 
 											  <div class="form-group">
 											   <label for="exampleInputEmail1">ALAMAT</label>
-											    <textarea name="pegawai_alamat" class="form-control" id="exampleControlTextArea1" rows="3"></textarea>
+											    <textarea name="alamat" type="text" class="form-control" id="exampleControlTextArea1" rows="3" required="required"></textarea>
 											  </div>
 
 										     	 </div>
 												      <div class="modal-footer">
-												        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-												         <button type="submit" class="btn btn-primary">Submit</button>
+												        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+												         <button type="submit" class="btn btn-primary">Tambahkan</button>
 												     </form>
 												 </div>
 										     </div>
