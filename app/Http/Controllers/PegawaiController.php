@@ -14,27 +14,27 @@ class PegawaiController extends Controller
 
     public function create(Request $request)
     {
-    	\App\Pegawai::create($request->all());
-    	return redirect('/pegawai');
+        \App\Pegawai::create($request->all());
+        return redirect('\pegawai');
     }
 
     public function edit($id)
     {
-    	$pegawai = \App\Pegawai::find($id);
-    	return view('pegawai.edit',['siswa' => $siswa]);
+        $pegawai = \App\Pegawai::find($id);
+        return view('pegawai/edit',['pegawai' => $pegawai]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-    	$pegawai = \App\pegawai::find($id);
-    	$pegawai->update($request->all());
-    	return redirect('/siswa');
+        $pegawai = \App\Pegawai::find($id);
+        $pegawai->update($request->all());
+        return redirect('/pegawai');
     }
 
     public function delete($id)
     {
-    	$pegawai = \App\Pegawai::find($id);
-    	$pegawai->delete($pegawai);
-    	return redirect('/pegawai');
+        $pegawai = \App\Pegawai::find($id);
+        $pegawai->delete($pegawai);
+        return redirect('/pegawai');
     }
 }
