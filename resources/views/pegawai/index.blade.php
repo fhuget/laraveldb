@@ -10,63 +10,27 @@
 							background-color: #F0FFFF;}
 
 					h1 {font-family: 'Futura', sans-serif;}
-
-					.sidebar {
-						padding-top: 100px;
-					  height: 100%;
-					  width: 200px;
-					  position: fixed;
-					  z-index: 1;
-					  top: 0;
-					  left: 0;
-					  background-color: turquoise;
-					  overflow-x: hidden;
-					  padding-top: 16px;
-					}
-
-					.sidebar a {
-					  padding: 6px 8px 6px 16px;
-					  text-decoration: none;
-					  font-size: 20px;
-					  color: black;
-					  display: block;
-					}
-
-					.sidebar a:hover {
-
-					  color: #f1f1f1;
-					}
-
-					.main {
-					  margin-left: 200px;
-					  padding: 0px 10px;
-					}
-
-					@media screen and (max-height: 450px) {
-					  .sidebar {padding-top: 15px;}
-					  .sidebar a {font-size: 18px;}
-					}
 				</style>
 	</head>
 <body>
-				<div class="sidebar">
-				  <a href="index.php"><button type="button" class="btn btn-info btn-xs" style="margin-top: 100px; margin-bottom: 50px; width: 150px;">Beranda</button></a>
-				  <a href="add_data.php"><button type="button" class="btn btn-success btn-xs" style="margin-bottom: 50px; width: 150px;">Tambah Data</button></a>
-				  <a href="read_data.php"><button type="button" class="btn btn-warning btn-xs" style="margin-bottom: 50px; width: 150px;">Lihat Data</button></a>
-				</div>
+				<nav class="navbar navbar-light bg-secondary">
+			  <a class="navbar-brand"><h1>Data Pegawai</h1></a>
+			  <form class="form-inline my-2 my-lg-0">
+			    <input name="cari" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" method="GET" action="/pegawai">
+			    <button class="btn btn-warning" type="submit">Search</button>
+			  </form>
+			</nav>
 				
 				<div class="main">
 				  <div class="container">
 		<div class="row">
 			<div class="col-6">
-				<h1>Data Pegawai</h1>
+				<button type="button" class="btn btn-primary float right" data-toggle="modal" data-target="#exampleModal"> Tambah Data Pegawai</button>
+				<a href="/pegawai"><button type="button" class="btn btn-success float right">Refresh</button></a>
 			</div>
 			<div class="col-6">
-				<!-- Button trigger modal -->
-								<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
-								  Tambah Data Pegawai
-								</button>
-							</div>
+				
+			</div>
 
 					<table class="table">
 					<tr>
@@ -75,18 +39,20 @@
 						<th>UMUR</th>
 						<th>ALAMAT</th>
 					</tr>
-					@foreach($data_pegawai as $pegawai)
+					@foreach($data_pegawai as $data_pgw)
 					<tr>
-						<td>{{$pegawai->nama}}</td>
-						<td>{{$pegawai->jabatan}}</td>
-						<td>{{$pegawai->umur}}</td>
-						<td>{{$pegawai->alamat}}</td>
-						<td><a href="/pegawai/{{$pegawai->id}}/edit"  class="btn btn-warning btn-sm">Edit</a></td>
-						<td><a href="/pegawai/{{$pegawai->id}}/delete" class="btn btn-danger btn-sm">Hapus</a></td>
+						<td>{{$data_pgw->nama}}</td>
+						<td>{{$data_pgw->jabatan}}</td>
+						<td>{{$data_pgw->umur}}</td>
+						<td>{{$data_pgw->alamat}}</td>
+						<td><a href="/pegawai/{{$data_pgw->id}}/edit"  class="btn btn-warning btn-sm">Edit</a></td>
+						<td><a href="/pegawai/{{$data_pgw->id}}/delete" class="btn btn-danger btn-sm">Hapus</a></td>
 
 					</tr>
 					@endforeach
 				</table>
+
+				{{ $data_pegawai->links() }}
 			</div>
 		</div>
 
@@ -102,12 +68,12 @@
 								       {{csrf_field()}}
 
 											 <div class="form-group">
-											    <label for="exampleFormControlInput1">Nama</label>
+											    <label for="exampleFormControlInput1">NAMA</label>
 											    <input type="nama" name="nama" class="form-control" id="exampleFormControlInput1" placeholder="Nama" required="required">
 											  </div>
 
 											  <div class="form-group">
-											   <label for="exampleFormControlSelect1">Jabatan</label>
+											   <label for="exampleFormControlSelect1">JABATAN</label>
 											   <select name="jabatan" class="form-control" id="exampleFormControlSelect1" required="required">
 											   	<option value="Ketua">Ketua</option>
 											   	<option value="Wakil Ketua">Wakil Ketua</option>
@@ -117,7 +83,7 @@
 											  </div>
 
 											   <div class="form-group">
-											    <label for="exampleFormControlInput2">Umur</label>
+											    <label for="exampleFormControlInput2">UMUR</label>
 											    <input type="number" name="umur" class="form-control" id="exampleFormControlInput2" placeholder="Umur" required="required">
 											  </div>
 
@@ -125,6 +91,15 @@
 											   <label for="exampleInputEmail1">ALAMAT</label>
 											    <textarea name="alamat" type="text" class="form-control" id="exampleControlTextArea1" rows="3" required="required"></textarea>
 											  </div>
+
+											  <label>Image</label>
+											  <div class="input-group">
+											  	<div class="custom-file">
+											  		<input type="file" class="custom-file-input">
+											  		<label class="custom-file-input">Choose file</label>
+											  	</div>
+											  </div>
+
 
 										     	 </div>
 												      <div class="modal-footer">
