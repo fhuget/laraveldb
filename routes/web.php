@@ -22,3 +22,4 @@ Route::post('/pegawai/create','PegawaiController@create');
 Route::get('/pegawai/{id}/edit','PegawaiController@edit');
 Route::post('/pegawai/{id}/update','PegawaiController@update');
 Route::get('/pegawai/{id}/delete','PegawaiController@delete');
+Route::get('/pegawai/search','PegawaiController@search');
