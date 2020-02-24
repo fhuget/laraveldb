@@ -27,6 +27,7 @@
 			<div class="col-6">
 				<button type="button" class="btn btn-primary float right" data-toggle="modal" data-target="#exampleModal"> Tambah Data Pegawai</button>
 				<a href="/pegawai"><button type="button" class="btn btn-success float right">Refresh</button></a>
+				<a href="/home"><button type="button" class="btn btn-danger float right">Kembali</button></a>
 			</div>
 			<div class="col-6">
 				
@@ -95,7 +96,7 @@
 											  <label>Image</label>
 											  <div class="input-group">
 											  	<div class="custom-file">
-											  		<input type="file" class="custom-file-input">
+											  		<input type="file" name="image">
 											  		<label class="custom-file-input">Choose file</label>
 											  	</div>
 											  </div>

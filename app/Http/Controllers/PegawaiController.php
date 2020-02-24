@@ -20,6 +20,7 @@ class PegawaiController extends Controller
     public function create(Request $request)
     {
         \App\Pegawai::create($request->all());
+        echo $request->file('image')->store('public');
         return redirect('\pegawai');
     }
 

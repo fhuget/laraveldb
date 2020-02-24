@@ -15,6 +15,7 @@
                     @endif
 
                     You are logged in!
+                    <a href="/pegawai"><button type="button" class="btn btn-success float right">Data Pegawai</button></a>
                 </div>
             </div>
         </div>
